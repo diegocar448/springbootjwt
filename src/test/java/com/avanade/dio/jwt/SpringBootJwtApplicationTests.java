@@ -1,4 +1,4 @@
-package com.avanade.dio.SpringBootJwt;
+package com.avanade.dio.jwt;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
