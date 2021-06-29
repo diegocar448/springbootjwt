@@ -36,11 +36,12 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 /*qualquer coisa que tiver o verbo POST e login poderá ser acessado*/
                 .antMatchers(HttpMethod.POST, SecurityConstants.SIGN_UP_URL)
                 .permitAll()
-                .anyRequest().authenticated();
-//                .and()
-//                .addFilter(new JWTAuthenticationFilter(authenticationManager()))
-//                .addFilter(new JWTAuthenticationFilter(authenticationManager()))
-//                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                .anyRequest().authenticated()
+                .and()
+                /*Aqui dizemos quem irá autenticar*/
+                .addFilter(new JWTAuthenticationFilter(authenticationManager()))
+                /*Aqui dizemos que ele não guardará nada na sessão*/
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
 
     @Override
