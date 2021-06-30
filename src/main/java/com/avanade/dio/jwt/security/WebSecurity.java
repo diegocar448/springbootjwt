@@ -40,6 +40,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 .and()
                 /*Aqui dizemos quem irá autenticar*/
                 .addFilter(new JWTAuthenticationFilter(authenticationManager()))
+                /*Aqui irá ler e autorizar o token*/
+                .addFilter(new JWTAuthorizationFilter(authenticationManager()))
                 /*Aqui dizemos que ele não guardará nada na sessão*/
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
